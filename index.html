@@ -4,7 +4,8 @@
 <meta name="description" content="Sk. Faijan Bin Halim, Assistant Professor of Economics, Khulna University, Bangladesh.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css"></head><body>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="assets/extra.css"></head><body>
 <header><div class="bar"><a class="brand" href="index.html">Sk. Faijan Bin Halim</a>
 <input type="checkbox" id="menu"><label class="burger" for="menu" aria-label="Menu">&#9776;</label>
 <nav><ul><li><a href="index.html" class="active">Home</a></li><li><a href="education.html">Education</a></li><li class="has-sub"><a href="experience.html">Experience</a><ul class="sub"><li><a href="experience.html#positions">Positions</a></li><li><a href="experience.html#training">Professional Training</a></li></ul></li><li class="has-sub"><a href="research.html">Research</a><ul class="sub"><li><a href="research.html#interests">Research Interests</a></li><li><a href="research.html#publications">Publications</a></li><li><a href="research.html#projects">Projects</a></li><li><a href="research.html#review">Peer Review</a></li></ul></li><li class="has-sub"><a href="teaching.html">Teaching</a><ul class="sub"><li><a href="teaching.html#econometrics">Econometrics</a></li><li><a href="teaching.html#microeconomics">Microeconomics</a></li><li><a href="teaching.html#health">Health Economics</a></li><li><a href="teaching.html#climate">Climate Change and Disaster Management</a></li></ul></li><li><a href="blog.html">Blog</a></li><li><a href="econstat.html">EconStat</a></li></ul></nav></div></header>
@@ -36,9 +37,22 @@
 <p style="margin-top:1em"><a href="blog.html">All blog posts &rarr;</a></p>
 <h2>Availability</h2>
 <p class="muted">Days marked in red are days I am busy. Please choose another day when you request a meeting.</p>
-<div id="cal"></div>
+<div id="busy-calendar"></div>
 </div></div>
 </main>
+
+<script src="assets/calendar.js"></script>
+<script>
+fetch('blog/posts.json?v=' + Date.now())
+  .then(function (r) { return r.json(); })
+  .then(function (ps) {
+    document.getElementById('latest').innerHTML = ps.slice(0, 3).map(function (p) {
+      return '<li><a href="post.html?p=' + p.slug + '">' + p.title + '</a> <span class="muted">(' + p.date + ')</span></li>';
+    }).join('') || '<li class="muted">No posts yet.</li>';
+  })
+  .catch(function () {});
+</script>
+</body></html>
 <footer>&copy; 2026 Sk. Faijan Bin Halim &middot; Economics Discipline, Khulna University</footer>
 <script src="posts.js"></script><script src="blog.js"></script><script src="busy-dates.js"></script><script src="calendar.js"></script>
 </body></html>
