@@ -1,0 +1,23 @@
+=== 1) index.html (home) ===
+In <head>, before </head>:
+  <link rel="stylesheet" href="assets/extra.css">
+Where the old calendar is, REPLACE it with:
+  <div id="busy-calendar"></div>
+Before </body>:
+  <script src="assets/calendar.js"></script>
+
+=== 2) teaching.html ===
+In <head>:  <link rel="stylesheet" href="assets/extra.css">
+Under each course heading, REPLACE the blank table with ONE line (ids must match data/materials.json):
+  <div class="materials" data-course="econometrics-1"></div>
+  <div class="materials" data-course="econometrics-2"></div>
+  <div class="materials" data-course="microeconomics"></div>
+  <div class="materials" data-course="health-economics"></div>
+  <div class="materials" data-course="climate-change"></div>
+Before </body>:  <script src="assets/teaching.js"></script>
+
+=== 3) blog.html ===
+In <head>:  <link rel="stylesheet" href="assets/extra.css">
+In the page body, REPLACE the blog content with:
+  <div id="post-list">Loading...</div>
+Before </body>:  <script src="assets/blog.js"></script>
